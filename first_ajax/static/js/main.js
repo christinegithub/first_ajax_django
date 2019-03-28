@@ -44,4 +44,16 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.appendChild(data);
     })
   })
+
+  const car = document.getElementById('car');
+  car.addEventListener('click', function() {
+    axios.get('http://intro-ajax-api.herokuapp.com/a_car')
+    .then(function(response) {
+      const data = document.createElement('section');
+      const list = document.createElement('list');
+      list.id = "list-of-cars";
+      list.innerHTML = response.data;
+      document.body.appendChild(list);
+    })
+  })
 });
