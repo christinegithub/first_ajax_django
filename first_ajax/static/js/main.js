@@ -27,9 +27,21 @@ document.addEventListener("DOMContentLoaded", function() {
   count.addEventListener('click', function() {
     axios.get('http://intro-ajax-api.herokuapp.com/count')
     .then(function(response) {
-      const count = document.createElement('section');
-      count.innerHTML = response.data;
-      document.body.appendChild(count);
+      const data = document.createElement('section');
+      data.innerHTML = response.data;
+      document.body.appendChild(data);
+    })
+  });
+
+  const time = document.getElementById('time');
+  time.addEventListener('click', function() {
+    axios.get('http://intro-ajax-api.herokuapp.com/time', {
+      params: {timezone: 'America/Mexico_City'}
+    })
+    .then(function(response) {
+      const data = document.createElement('section');
+      data.innerHTML = response.data;
+      document.body.appendChild(data);
     })
   })
 });
