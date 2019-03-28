@@ -25,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const count = document.getElementById('count');
   count.addEventListener('click', function() {
-    axios.get('http://intro-ajax-api.herokuapp.com/count')
+    axios.get('http://intro-ajax-api.herokuapp.com/count', {
+      params: {amount: 0} // Amount ranges from 1 to 5
+    })
     .then(function(response) {
       const data = document.createElement('section');
       data.innerHTML = response.data;
