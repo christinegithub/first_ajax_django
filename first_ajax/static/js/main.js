@@ -22,4 +22,14 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Hey the request finised!");
     });
   });
+
+  const count = document.getElementById('count');
+  count.addEventListener('click', function() {
+    axios.get('http://intro-ajax-api.herokuapp.com/count')
+    .then(function(response) {
+      const count = document.createElement('section');
+      count.innerHTML = response.data;
+      document.body.appendChild(count);
+    })
+  })
 });
